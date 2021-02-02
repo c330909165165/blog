@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="admin/_fragments :: head(~{::title})">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>博客管理登录</title>
+    <title>博客登录</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.4/dist/semantic.min.css">
-    <link rel="stylesheet" href="../../static/css/me.css">
+    <link rel="stylesheet" href="../static/css/me.css">
 </head>
 <body>
 <br>
@@ -17,10 +17,10 @@
             <div class="column">
                 <h2 class="ui teal image header">
                     <div class="content">
-                        管理后台登录
+                        博客登录
                     </div>
                 </h2>
-                <form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
+                <form class="ui large form" method="post" action="#" th:action="@{/login/user}">
                     <div class="ui segment">
                         <div class="field">
                             <div class="ui left icon input">
@@ -41,16 +41,15 @@
                     <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名和密码错误</div>
 
                 </form>
-
-
+                <div class="ui message">
+                    没有账号？<a href="#">注册</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-    <th:block th:replace="admin/_fragments :: script">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    </th:block>
 
 <script>
     $('.ui.form').form({
