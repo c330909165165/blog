@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="admin/_fragments :: head(~{::title})">
+<head th:replace="user/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>标签管理</title>
@@ -10,13 +10,14 @@
 <body>
 
 <!--导航-->
-<nav th:replace="admin/_fragments :: menu(4)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+<nav th:replace="user/_fragments :: menu(4)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary menu stackable">
             <h2 class="ui teal header item">管理后台</h2>
             <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>个人中心</a>
             <div class="right m-item m-mobile-hide menu">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -54,28 +55,33 @@
             </tr>-->
             </thead>
             <tbody>
-            <tr th:each="type,iterStat : ${page.content}">
-                <td th:text="${iterStat.count}">1</td>
-                <td th:text="${user.nickname}">用户名</td>
-                <td th:text="${user.nickname}">admin</td>
+            <tr>
+                <td>1</td>
+                <td >昵称</td>
+                <td th:text="${nickname}">admin</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>密码</td>
+                <td>************</td>
                 <td>
-                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
                 </td>
             </tr>
-            <tr th:each="type,iterStat : ${page.content}">
-                <td th:text="${iterStat.count}">1</td>
-                <td th:text="${user.email}">邮箱</td>
-                <td th:text="${type.email}">330909165@qq.com</td>
+            <tr>
+                <td>3</td>
+                <td>邮箱</td>
+                <td th:text="${email}">330909165@qq.com</td>
                 <td>
-                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
                 </td>
             </tr>
-            <tr th:each="type,iterStat : ${page.content}">
-                <td th:text="${iterStat.count}">1</td>
-                <td th:text="${user.avatar}">图片</td>
-                <td th:text="${type.avatar}">330909165@qq.com</td>
+            <tr>
+                <td>4</td>
+                <td>图片</td>
+                <td th:text="${avatar}">330909165@qq.com</td>
                 <td>
-                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
                 </td>
             </tr>
             </tbody>

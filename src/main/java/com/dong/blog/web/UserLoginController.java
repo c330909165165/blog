@@ -53,10 +53,10 @@ public class UserLoginController {
             model.addAttribute("types",typeService.listTypeTop(6));
             model.addAttribute("tags",tagService.listTagTop(10));
             model.addAttribute("recommendBlogs",blogService.listRecommendBlogTop(8));
-            return "index";
+            return "user/index";
         }else{
             attributes.addFlashAttribute("message","用户名和密码错误");
-            return "redirect:/user";
+            return "redirect:/login";
         }
     }
 

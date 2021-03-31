@@ -3,18 +3,21 @@ package com.dong.blog.service;
 import com.dong.blog.pojo.User;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface PersonalService {
 
-    String getNickname(User user);
+    String getNickname(Long id);
 
-    String getUsername(User user);
+    String getUsername(Long id);
 
-    String getEmail(User user);
+    String getEmail(Long id);
 
-    String getAvatar(User user);
+    String getAvatar(Long id);
 
-    User updateNickname(Long id,User user);
+    User updatePassword(Long id,String password);
 
-    User updateAvatar(Long id,User user);
+    User updateNickname(Long id,String nickname);
+
+    User updateAvatar(Long id,String avatar);
+
+    User updateEmail(Long id,String email);
 }
