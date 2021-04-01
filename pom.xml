@@ -85,6 +85,13 @@
             <artifactId>commonmark-ext-heading-anchor</artifactId>
             <version>0.13.0</version>
         </dependency>
+
+        <!--String Utils-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
 
     <build>

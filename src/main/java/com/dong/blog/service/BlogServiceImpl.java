@@ -7,6 +7,7 @@ import com.dong.blog.pojo.Type;
 import com.dong.blog.util.MarkdownUtils;
 import com.dong.blog.util.MyBeanUtils;
 import com.dong.vo.BlogQuery;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,7 +59,7 @@ public class BlogServiceImpl implements BlogService{
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
-                if(!"".equals(blog.getTitle()) && blog.getTitle() != null){
+                if(StringUtils.isNotBlank(blog.getTitle())){
                     predicates.add(cb.like(root.<String>get("title"),"%" + blog.getTitle() + "%"));
                 }
                 if(blog.getTypeId() != null){

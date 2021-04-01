@@ -32,8 +32,8 @@ public class SignController {
         user.setUpdateTime(Date.from(Instant.now()));
         user.setType(2);
         user.setAvatar("https://picsum.photos/id/1050/100/100");
-        userService.saveUser(user);
         user.setPassword(MD5Util.code(user.getPassword()));
+        userService.saveUser(user);
         attributes.addFlashAttribute("message","注册成功");
         return "redirect:/login";
     }

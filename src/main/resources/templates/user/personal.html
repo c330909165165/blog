@@ -59,13 +59,16 @@
                 <td>1</td>
                 <td >昵称</td>
                 <td th:text="${nickname}">admin</td>
+                <td>
+                    <a href="#" th:href="@{/user/nickname-input}" class="ui mini teal basic button">修改</a>
+                </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>密码</td>
                 <td>************</td>
                 <td>
-<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
+                    <a href="#" th:href="@{/user/password-input}" class="ui mini teal basic button">修改</a>
                 </td>
             </tr>
             <tr>
@@ -73,7 +76,7 @@
                 <td>邮箱</td>
                 <td th:text="${email}">330909165@qq.com</td>
                 <td>
-<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
+                    <a href="#" th:href="@{/user/email-input}" class="ui mini teal basic button">修改</a>
                 </td>
             </tr>
             <tr>
@@ -81,7 +84,7 @@
                 <td>图片</td>
                 <td th:text="${avatar}">330909165@qq.com</td>
                 <td>
-<!--                    <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">修改</a>-->
+                    <a href="#" th:href="@{/user/avatar-input}" class="ui mini teal basic button">修改</a>
                 </td>
             </tr>
             </tbody>
