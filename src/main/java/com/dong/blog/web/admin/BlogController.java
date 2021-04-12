@@ -37,6 +37,13 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * 查询博客
+     * @param pageable
+     * @param blog
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs")
     public String bolgs(@PageableDefault(size = 5,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,
                         BlogQuery blog, Model model){
@@ -45,6 +52,13 @@ public class BlogController {
         return LIST;
     }
 
+    /**
+     * 搜索博客
+     * @param pageable
+     * @param blog
+     * @param model
+     * @return
+     */
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 5,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,
                          BlogQuery blog, Model model){

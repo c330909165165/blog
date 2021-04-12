@@ -56,6 +56,9 @@ public class BlogServiceImpl implements BlogService{
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
 
         return blogRepository.findAll(new Specification<Blog>() {
+            /**
+             *root 查询的对象  criteriaQuery 条件容器，把条件放到cq里 criteriaBuilder 条件表达式
+             */
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();

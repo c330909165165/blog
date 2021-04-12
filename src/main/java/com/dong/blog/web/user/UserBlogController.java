@@ -99,5 +99,4 @@ public class UserBlogController {
         attributes.addFlashAttribute("message","删除成功");
         return REDIRECT_LIST;
     }
-
 }
