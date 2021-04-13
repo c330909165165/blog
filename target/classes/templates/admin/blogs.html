@@ -39,8 +39,8 @@
     <div class="ui attached pointing menu">
         <div class="ui container">
             <div class="right menu">
-                <a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
-                <a href="#" th:href="@{/admin/blogs}" class="teal active item">列表</a>
+                <a href="#" th:href="@{/user/blogs/input}" class="item">发布</a>
+                <a href="#" th:href="@{/user/blogs}" class="teal active item">列表</a>
             </div>
         </div>
     </div>
@@ -104,8 +104,8 @@
                         <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
                         <td th:text="${blog.updateTime}">2020-10-02 09:45</td>
                         <td>
-                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
-                            <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
+                            <a href="#" th:href="@{/user/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
+                            <a href="#" th:href="@{/user/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
                         </td>
                     </tr>
                     </tbody>
@@ -116,7 +116,7 @@
                                 <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
                                 <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
                             </div>
-                            <a href="#" th:href="@{/admin/blogs/input}" class="ui right floated mini teal basic button">新增</a>
+                            <a href="#" th:href="@{/user/blogs/input}" class="ui right floated mini teal basic button">新增</a>
                         </th>
                     </tr>
                     </tfoot>
@@ -204,7 +204,7 @@
     });
 
     function loaddata(){
-        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
+        $("#table-container").load(/*[[@{/user/blogs/search}]]*/"/user/blogs/search",{
             title : $("[name='title']").val(),
             typeId : $("[name='typeId']").val(),
             recommend : $("[name='recommend']").prop('checked'),

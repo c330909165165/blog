@@ -77,8 +77,6 @@ public class PersonalController {
     public String emailInput(HttpSession session,@RequestBody String email){
         User user = (User) session.getAttribute("user");
         Optional<User> opt = userRepository.findById(user.getId());
-
-        System.out.println(email);
         opt.ifPresent(user1 -> {
             user1.setEmail(email.replace("%40","@").substring(5));
             userRepository.save(user1);
@@ -88,6 +86,24 @@ public class PersonalController {
         });
         return "redirect:/user/personal";
     }
+    @GetMapping("/avatar-input")
+    public String avatar(){
+        return "user/avatar-input";
+    }
+    @PostMapping("/avatar-input")
+    public String avatarInput(HttpSession session,@RequestBody String avatar){
+        User user = (User) session.getAttribute("user");
+        Optional<User> opt = userRepository.findById(user.getId());
+        opt.ifPresent(user1 -> {
+            user1.setAvatar(avatar.replace("%3A",":").replace("%2F","/").substring(5));
+            userRepository.save(user1);
+            user1.setPassword(null);
+            session.removeAttribute("user");
+            session.setAttribute("user",user1);
+        });
+        return "redirect:/user/personal";
+    }
+
 
 
 }
