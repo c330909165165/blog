@@ -52,6 +52,12 @@ public class BlogServiceImpl implements BlogService{
         return b;
     }
 
+    /**
+     * 查询博客
+     * @param pageable
+     * @param blog
+     * @return
+     */
     @Override
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
 
@@ -62,6 +68,31 @@ public class BlogServiceImpl implements BlogService{
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
+                if(StringUtils.isNotBlank(blog.getTitle())){
+                    predicates.add(cb.like(root.<String>get("title"),"%" + blog.getTitle() + "%"));
+                }
+                if(blog.getTypeId() != null){
+                    predicates.add(cb.equal(root.<Type>get("type").get("id"),blog.getTypeId()));
+                }
+                if(blog.isRecommend()){
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"),blog.isRecommend()));
+                }
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
+    }
+
+    @Override
+    public Page<Blog> listBlog(Pageable pageable, BlogQuery blog, Long userId) {
+        return blogRepository.findAll(new Specification<Blog>() {
+            /**
+             *root 查询的对象  criteriaQuery 条件容器，把条件放到cq里 criteriaBuilder 条件表达式
+             */
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates = new ArrayList<>();
+                    predicates.add(cb.equal(root.<Long>get("user").get("id"),userId));
                 if(StringUtils.isNotBlank(blog.getTitle())){
                     predicates.add(cb.like(root.<String>get("title"),"%" + blog.getTitle() + "%"));
                 }

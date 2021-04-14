@@ -39,9 +39,10 @@ public class UserBlogController {
 
     @GetMapping("/blogs")
     public String bolgs(@PageableDefault(size = 5,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,
-                        BlogQuery blog, Model model){
+                        BlogQuery blog, Model model,HttpSession session){
+        User user = (User) session.getAttribute("user");
         model.addAttribute("types",typeService.listType());
-        model.addAttribute("page",blogService.listBlog(pageable,blog));
+        model.addAttribute("page",blogService.listBlog(pageable,blog,user.getId()));
         return LIST;
     }
 
