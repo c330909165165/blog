@@ -30,6 +30,10 @@ public class LoginController {
                         HttpSession session,
                         RedirectAttributes attributes){
         User user = userService.checkUser(username, password);
+        if(2 == user.getType()){
+            attributes.addFlashAttribute("message","您不是管理员，无法登录");
+            return "redirect:/login";
+        }
         if(user != null){
             user.setPassword(null);
             session.setAttribute("user",user);
