@@ -1,6 +1,7 @@
 package com.dong.blog.dao;
 
 import com.dong.blog.pojo.Blog;
+import com.dong.blog.pojo.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,5 +34,7 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
 
     @Query("select b from Blog b where function('date_format',b.updateTime,'%Y') = ?1 ")
     List<Blog> findByYear(String year);
+
+    void deleteAllByUser(User user);
 
 }
